@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VirtualWallet</string>
+    <string name="login_with_google">login</string>
 </resources>
