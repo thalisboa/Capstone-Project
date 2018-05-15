@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "439508647738",
+    "firebase_url": "https://virtualwallet-c8941.firebaseio.com",
+    "project_id": "virtualwallet-c8941",
+    "storage_bucket": "virtualwallet-c8941.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439508647738:android:738481df15c3fc29",
+        "android_client_info": {
+          "package_name": "thaislisboa.com.virtualwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439508647738-c26lqa84mu0c20qbc8o0cuupl86dbpul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "thaislisboa.com.virtualwallet",
+            "certificate_hash": "3ba53731630a065a469e012f324418f0a4179b2d"
+          }
+        },
+        {
+          "client_id": "439508647738-hnbckkqf3g510ge6m0djmbs9192fv2b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLjblJY_q-_DN31UaU1T7nr1TG_ARW6so"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439508647738-hnbckkqf3g510ge6m0djmbs9192fv2b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
