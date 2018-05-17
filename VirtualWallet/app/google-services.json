@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "439508647738-c26lqa84mu0c20qbc8o0cuupl86dbpul.apps.googleusercontent.com",
+          "client_id": "439508647738-819dml2vcmiampsrm0625renb3ufman2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "thaislisboa.com.virtualwallet",
-            "certificate_hash": "3ba53731630a065a469e012f324418f0a4179b2d"
+            "certificate_hash": "0d846311be25771bb0a960442935e8034c283ffc"
           }
         },
         {
