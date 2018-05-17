@@ -1,4 +1,4 @@
-package thaislisboa.com.virtualwallet;
+package thaislisboa.com.virtualwallet.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 import java.util.List;
+
+import thaislisboa.com.virtualwallet.R;
 
 public class MainActivity extends AppCompatActivity {
 
