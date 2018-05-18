@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">VirtualWallet</string>
-    <string name="login_with_google">login</string>
+    <string name="login_with_google">Login</string>
     <string name="title_activity_add_transation">AddTransationActivity</string>
+    <string name="name">Name</string>
+    <string name="categoty">Categoty</string>
+    <string name="value">Value</string>
+    <string name="deposit">Deposit</string>
+    <string name="expense">Expense</string>
+    <string name="calendar">calendar</string>
 </resources>
