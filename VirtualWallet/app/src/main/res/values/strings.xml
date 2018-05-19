@@ -8,4 +8,5 @@
     <string name="deposit">Deposit</string>
     <string name="expense">Expense</string>
     <string name="calendar">calendar</string>
+    <string name="type">type</string>
 </resources>

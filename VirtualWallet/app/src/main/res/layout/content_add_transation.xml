@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.AddTransationActivity"
     tools:showIn="@layout/activity_add_transation">
 
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="16sp" />
 
 
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tv_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/calendar"
-            android:textSize="16sp" />
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp" />
 
 
-        <EditText
-            android:id="@+id/et_calendar"
-            android:layout_width="170sp"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calendar"
+                android:textSize="16sp" />
+
+
+            <EditText
+                android:id="@+id/et_calendar"
+                android:layout_width="170sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
 
         <TextView
@@ -67,25 +74,43 @@
             android:text="@string/value"
             android:textSize="16sp" />
 
+
+        <EditText
+            android:id="@+id/et_value"
+            android:layout_width="170sp"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/type"
+            android:textSize="16sp" />
+
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
 
             <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_deposit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/deposit" />
+                android:text="@string/deposit"
+                android:checked="true"/>
 
 
             <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_expense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/expense" />
-
 
         </RadioGroup>
 
 
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

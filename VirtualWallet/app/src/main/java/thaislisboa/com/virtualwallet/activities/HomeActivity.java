@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Button btn = findViewById(R.id.btn_signout);
+        Button btn_2 = findViewById(R.id.btn_insert);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +40,16 @@ public class HomeActivity extends AppCompatActivity {
                         });
             }
         });
-    }
 
+        btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(HomeActivity.this, AddTransationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+    }
 }
