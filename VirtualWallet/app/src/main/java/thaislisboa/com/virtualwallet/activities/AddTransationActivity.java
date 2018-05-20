@@ -25,7 +25,7 @@ public class AddTransationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        et = (EditText) findViewById(R.id.et_name);
+        et = (EditText) findViewById(R.id.et_calendar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class AddTransationActivity extends AppCompatActivity {
                             " / " + (view.getMonth() + 1) +
                             " / " + view.getDayOfMonth(), Toast.LENGTH_SHORT).show();
 
-                    et.setText(view.getDayOfMonth() + "/" + view.getYear() + " thais bateu as botas");
+                    et.setText(view.getYear() + "/" + view.getMonth()+"/"+ view.getDayOfMonth());
                 }
             };
 }
