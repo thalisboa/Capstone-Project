@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(HomeActivity.this, AddTransationActivity.class);
+                Intent intent = new Intent(HomeActivity.this, HomeWalletActivity.class);
                 startActivity(intent);
                 finish();
             }

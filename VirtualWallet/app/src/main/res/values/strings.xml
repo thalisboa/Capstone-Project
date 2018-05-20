@@ -9,4 +9,6 @@
     <string name="expense">Expense</string>
     <string name="calendar">Calendar</string>
     <string name="type">Type</string>
+    <string name="title_activity_home_wallet">HomeWalletActivity</string>
+    <string name="Month">month_spinner</string>
 </resources>
