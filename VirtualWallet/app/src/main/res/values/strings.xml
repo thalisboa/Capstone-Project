@@ -11,4 +11,5 @@
     <string name="type">Type</string>
     <string name="title_activity_home_wallet">HomeWalletActivity</string>
     <string name="Month">month_spinner</string>
+    <string name="title_activity_category">CategoryActivity</string>
 </resources>

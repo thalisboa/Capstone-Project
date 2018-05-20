@@ -26,6 +26,10 @@
         <activity
             android:name=".activities.HomeWalletActivity"
             android:label="@string/title_activity_home_wallet"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.CategoryActivity"
+            android:label="@string/title_activity_category"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
