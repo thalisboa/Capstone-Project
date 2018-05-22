@@ -11,8 +11,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import thaislisboa.com.virtualwallet.R;
+import thaislisboa.com.virtualwallet.firebase.FirebaseDB;
 import thaislisboa.com.virtualwallet.fragment.MyDatePickerFragment;
+import thaislisboa.com.virtualwallet.model.Transaction;
 
 public class AddTransationActivity extends AppCompatActivity {
 
@@ -31,6 +35,17 @@ public class AddTransationActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Transaction t = new Transaction();
+
+                t.setName("Creme de Cabelo");
+                t.setDate(new Date());
+                t.setCategory("Beleza");
+                t.setValue(200.00);
+                t.setDeposit(true);
+
+                FirebaseDB.save(t, AddTransationActivity.this);
+
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
