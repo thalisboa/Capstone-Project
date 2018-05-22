@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(Authenticator.isUserAuthenticated()){
+
+            Intent intent = new Intent(this, HomeWalletActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         signInButton = findViewById(R.id.login_with_google);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this, user.getEmail(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(this, HomeActivity.class);
+                Intent intent = new Intent(this, HomeWalletActivity.class);
                 startActivity(intent);
                 finish();
 

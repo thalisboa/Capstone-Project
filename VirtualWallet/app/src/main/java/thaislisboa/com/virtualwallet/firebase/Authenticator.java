@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Arrays;
 import java.util.List;
 
-import thaislisboa.com.virtualwallet.activities.HomeActivity;
+import thaislisboa.com.virtualwallet.activities.HomeWalletActivity;
 
 public class Authenticator {
 
@@ -27,7 +27,7 @@ public class Authenticator {
 
         if (auth.getCurrentUser() != null) {
 
-            Intent intent = new Intent(context, HomeActivity.class);
+            Intent intent = new Intent(context, HomeWalletActivity.class);
             context.startActivity(intent);
 
         }
@@ -38,6 +38,12 @@ public class Authenticator {
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN);
+
+    }
+
+    public static boolean isUserAuthenticated() {
+
+        return FirebaseAuth.getInstance().getCurrentUser() != null;
 
     }
 
