@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import thaislisboa.com.virtualwallet.R;
 import thaislisboa.com.virtualwallet.firebase.Authenticator;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
 
     private SignInButton signInButton;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Create and launch sign-in intent
 
-                Authenticator.startAuthenticationUI(MainActivity.this);
+                Authenticator.startAuthenticationUI(LoginActivity.this);
 
             }
         });

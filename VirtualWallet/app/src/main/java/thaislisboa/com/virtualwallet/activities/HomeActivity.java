@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 // ...
 
-                                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             }

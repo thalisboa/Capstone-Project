@@ -142,7 +142,7 @@ public class HomeWalletActivity extends AppCompatActivity {
                                     .signOut(HomeWalletActivity.this)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Intent intent = new Intent(HomeWalletActivity.this, MainActivity.class);
+                                            Intent intent = new Intent(HomeWalletActivity.this, LoginActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }

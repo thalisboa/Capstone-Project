@@ -16,6 +16,13 @@
         android:layout_height="15dp"
         android:src="@drawable/ic_happy" />
 
+
+        <ImageView
+            android:id="@+id/iv_recycler_sad"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/emoticon_sad" />
+
     <TextView
         android:id="@+id/tv_recyclerview_name"
         android:layout_width="wrap_content"
