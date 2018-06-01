@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -12,7 +13,8 @@
         android:layout_height="511dp"
         android:background="@drawable/login"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:contentDescription="@string/login_with_google"/>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/login_with_google"

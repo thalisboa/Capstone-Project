@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import thaislisboa.com.virtualwallet.ListAdapter;
+import thaislisboa.com.virtualwallet.adapter.ListAdapter;
 import thaislisboa.com.virtualwallet.R;
 import thaislisboa.com.virtualwallet.model.Transaction;
 
@@ -45,9 +45,10 @@ public class HomeWalletActivity extends AppCompatActivity {
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Automobile");
-        categories.add("Business Services");
-        categories.add("Computers");
+        categories.add("Janeiro");
+        categories.add("Fevereiro");
+        categories.add("Março");
+        categories.add("Abril");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -103,6 +104,23 @@ public class HomeWalletActivity extends AppCompatActivity {
         t3.setDeposit(false);
 
         list.add(t3);
+
+        Transaction t4 = new Transaction();
+        t4.setName("Udacity");
+        t4.setDate(new Date());
+        t4.setCategory("extensão :[");
+        t4.setValue(400.00);
+        t4.setDeposit(true);
+
+        list.add(t4);
+
+        Transaction t5 = new Transaction();
+        t5.setName("MBA");
+        t5.setDate(new Date());
+        t5.setCategory("Educação");
+        t5.setValue(700.00);
+        t5.setDeposit(true);
+        list.add(t5);
 
 
         RecyclerView mRecyclerView = findViewById(R.id.rv_insert);

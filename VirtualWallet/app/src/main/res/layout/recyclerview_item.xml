@@ -1,52 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="8dp">
+    android:orientation="horizontal">
 
-    <LinearLayout
+
+    <com.github.vipulasri.timelineview.TimelineView
+        android:id="@+id/time_marker"
         android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:line="@color/colorPrimary"
+        app:linePadding="0dp"
+        app:lineSize="2dp"
+        app:marker="@drawable/circle_primary"
+        app:markerSize="20dp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        app:cardElevation="1dp"
+        app:contentPadding="4dp">
 
-    <ImageView
-        android:id="@+id/iv_recycler"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:src="@drawable/ic_happy" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_recyclerview_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Salary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recyclerview_type" />
+
+            <TextView
+                android:id="@+id/tv_recyclerview_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Deposit"
+                android:textSize="10sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageView
-            android:id="@+id/iv_recycler_sad"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/emoticon_sad" />
+            <TextView
+                android:id="@+id/tv_recyclerview_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="7.000,00"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_recyclerview_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recyclerview_name" />
 
-    <TextView
-        android:id="@+id/tv_recyclerview_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Salary"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_recyclerview_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:text="20/05/2018"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_recyclerview_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deposit"/>
 
-    <TextView
-        android:id="@+id/tv_recyclerview_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2018/05/20"/>
+        </android.support.constraint.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/tv_recyclerview_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7.000,00"/>
+
+    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>

@@ -48,6 +48,8 @@ public class Authenticator {
     }
 
     public static String getUser() {
+
+
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 

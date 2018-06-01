@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_add_category"
-        android:title="@string/categoty"
+        android:title="@string/category"
         android:icon="@drawable/folder_plus"
         app:showAsAction="always" />
 

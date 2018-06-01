@@ -8,96 +8,124 @@
     tools:context=".activities.AddTransationActivity"
     tools:showIn="@layout/activity_add_transation">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
 
-        <LinearLayout
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/name"
-                android:textSize="16sp" />
-
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/et_name"
-                android:layout_width="160dp"
+                android:id="@+id/transaction_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp" />
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
 
 
-            <TextView
-                android:id="@+id/tv_calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/calendar"
-                android:textSize="16sp" />
-
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_name">
 
             <EditText
-                android:id="@+id/et_calendar"
-                android:layout_width="wrap_content"
+                android:id="@+id/transaction_date"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="showDatePicker"
-                android:text="Pick Date"
-                android:textSize="12sp" />
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Date"
+                android:maxLines="1"
+                android:onClick="showDatePicker" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_date">
 
 
-        </LinearLayout>
-
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/categoty"
-            android:textSize="16sp" />
-
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/category"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/til_category" />
 
         <Spinner
-            android:id="@+id/sp_category"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" />
-
-
-        <TextView
-            android:id="@+id/tv_value"
+            android:id="@+id/transaction_category"
+            style="@style/spinner_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/value"
-            android:textSize="16sp" />
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="8dp"
+            android:prompt="@string/categories"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
-
-        <com.blackcat.currencyedittext.CurrencyEditText
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
-            android:maxLength="15" />
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_category">
 
-        <TextView
-            android:id="@+id/tv_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/type"
-            android:textSize="16sp" />
+            <com.blackcat.currencyedittext.CurrencyEditText
+                android:id="@+id/transaction_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="15" />
+
+        </android.support.design.widget.TextInputLayout>
 
 
         <RadioGroup
-            android:layout_width="wrap_content"
+            android:id="@+id/transaction_radio_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_value">,
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/type"
+                android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatRadioButton
                 android:id="@+id/rb_deposit"
@@ -116,5 +144,7 @@
         </RadioGroup>
 
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
 </ScrollView>
