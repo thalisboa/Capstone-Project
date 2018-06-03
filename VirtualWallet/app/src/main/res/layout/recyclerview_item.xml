@@ -24,7 +24,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="15dp"
-        app:cardElevation="1dp"
+        app:cardElevation="4dp"
         app:contentPadding="4dp">
 
         <android.support.constraint.ConstraintLayout
@@ -46,8 +46,8 @@
                 android:id="@+id/tv_recyclerview_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:text="Deposit"
                 android:textSize="10sp"
                 android:textStyle="bold|italic"
