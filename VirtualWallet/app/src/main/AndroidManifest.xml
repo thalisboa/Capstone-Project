@@ -31,7 +31,9 @@
             android:name=".activities.CategoryActivity"
             android:label="@string/title_activity_category"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.ChartActivity"></activity>
+        <activity android:name=".activities.ChartActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.HomeActivity1"></activity>
     </application>
 
 </manifest>

@@ -1,30 +1,51 @@
 package thaislisboa.com.virtualwallet.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Date;
+import com.blackcat.currencyedittext.CurrencyEditText;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import thaislisboa.com.virtualwallet.R;
-import thaislisboa.com.virtualwallet.fragment.MyDatePickerFragment;
+import thaislisboa.com.virtualwallet.callback.CallbackCategory;
+import thaislisboa.com.virtualwallet.firebase.FirebaseDB;
+import thaislisboa.com.virtualwallet.model.Category;
 import thaislisboa.com.virtualwallet.model.Transaction;
 
-public class AddTransationActivity extends AppCompatActivity {
+public class AddTransationActivity extends AppCompatActivity implements CallbackCategory {
 
-    EditText et;
+    private TextView mTvName;
+    private TextView mTvDate;
+    private Spinner mSpinnerCategories;
+    private CurrencyEditText mTvValue;
+    private RadioGroup mRadioGroupType;
+    private RadioButton mRadioButtonSelected;
+    private String mSelectedDate;
+
+
+    private TextInputLayout mTILName;
+    private TextInputLayout mTILDate;
+    private TextInputLayout mTILValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,67 +55,99 @@ public class AddTransationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        et = (EditText) findViewById(R.id.transaction_date);
+        mTvName = findViewById(R.id.transaction_name);
+        mTvDate = (EditText) findViewById(R.id.transaction_date);
+        mSpinnerCategories = (Spinner) findViewById(R.id.transaction_category);
+        mTvValue = findViewById(R.id.transaction_value);
+        mRadioGroupType = findViewById(R.id.transaction_radio_group);
+
+        mTILName = findViewById(R.id.til_name);
+        mTILDate = findViewById(R.id.til_date);
+        mTILValue = findViewById(R.id.til_value);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                if (TextUtils.isEmpty(mTvName.getText())) {
+                    mTILName.setError(getString(R.string.please_fill));
+                    return;
+                }
+
+                if (TextUtils.isEmpty(mTvDate.getText())) {
+                    mTILDate.setError(getString(R.string.please_fill));
+                    return;
+                }
+
+                if (parseCurrency(mTvValue.formatCurrency(mTvValue.getRawValue())) == 0) {
+                    mTILValue.setError(getString(R.string.please_fill));
+                    return;
+                }
+
+
                 Transaction t = new Transaction();
 
-                t.setName("Creme de Cabelo");
-                t.setDate(new Date());
-                t.setCategory("Beleza");
-                t.setValue(200.00);
-                t.setDeposit(true);
+                t.setName(mTvName.getText().toString());
+                t.setDateTransaction(mSelectedDate);
+                t.setCategory(mSpinnerCategories.getSelectedItem().toString());
+                t.setValue(parseCurrency(mTvValue.formatCurrency(mTvValue.getRawValue())));
 
-                //FirebaseDB.save(t, AddTransationActivity.this);
+                int selectedId = mRadioGroupType.getCheckedRadioButtonId();
+                mRadioButtonSelected = findViewById(selectedId);
 
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (mRadioButtonSelected.getText().toString().equals(getString(R.string.expense))) {
+                    t.setDeposit(false);
+                } else {
+                    t.setDeposit(true);
+                }
+
+                FirebaseDB.saveTransaction(t, AddTransationActivity.this);
+
+                finish();
             }
         });
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.transaction_category);
-
         // Spinner click listener
         //spinner.setOnItemSelectedListener(this);
 
-        // Spinner Drop down elements
-        List<String> categories = new ArrayList<String>();
-        categories.add("Beer");
-        categories.add("Transport");
-        categories.add("Health");
-        categories.add("Food");
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
 
+    }
 
+    public double parseCurrency(String price) {
+
+        Locale current = getResources().getConfiguration().locale;
+
+        try {
+            NumberFormat cf = NumberFormat.getCurrencyInstance(current);
+            Number number = cf.parse(price);
+
+            return number.doubleValue();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     public void showDatePicker(View v) {
-        MyDatePickerFragment newFragment = new MyDatePickerFragment(dateSetListener);
-        newFragment.show(getSupportFragmentManager(), "date picker");
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        mTvDate.setText(day + "/" + (month + 1) + "/" + year);
+                        mSelectedDate = year + "-" + (month + 1) + "-" + String.format("%02d", day);
+                    }
+                }, year, month, day);
+
+        datePickerDialog.show();
     }
-
-
-    private DatePickerDialog.OnDateSetListener dateSetListener =
-            new DatePickerDialog.OnDateSetListener() {
-                public void onDateSet(DatePicker view, int year, int month, int day) {
-                    Toast.makeText(AddTransationActivity.this, "selected date is " + view.getYear() +
-                            " / " + (view.getMonth() + 1) +
-                            " / " + view.getDayOfMonth(), Toast.LENGTH_SHORT).show();
-
-                    et.setText(view.getYear() + "/" + view.getMonth() + "/" + view.getDayOfMonth());
-                }
-            };
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -107,5 +160,25 @@ public class AddTransationActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseDB.loadCategories(this);
+    }
+
+    @Override
+    public void onReturn(List<Category> categoryList) {
+        ArrayAdapter<Category> dataAdapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item, categoryList);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerCategories.setAdapter(dataAdapter);
+    }
+
+    public void addCaregory(View view) {
+
+        Intent intent = new Intent(this, CategoryActivity.class);
+        startActivity(intent);
+
     }
 }

@@ -1,15 +1,21 @@
 package thaislisboa.com.virtualwallet.model;
 
-import java.util.Date;
-
 public class Transaction {
 
     private String uid;
     private String name;
     private String category;
-    private Date date;
+    private String dateTransaction;
     private double value;
     private boolean deposit;
+
+    public String getDateTransaction() {
+        return dateTransaction;
+    }
+
+    public void setDateTransaction(String dateTransaction) {
+        this.dateTransaction = dateTransaction;
+    }
 
     public String getUid() {
         return uid;
@@ -33,14 +39,6 @@ public class Transaction {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public double getValue() {

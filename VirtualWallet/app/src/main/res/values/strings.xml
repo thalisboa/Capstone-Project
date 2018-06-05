@@ -20,6 +20,6 @@
     <string name="added">Added</string>
     <string name="error">Error</string>
     <string name="categories">Categories</string>
-    <string name="categoty">Category</string>
-    <string name="Month">Month</string>
+    <string name="please_fill">Please fill</string>
+    <string name="delete">Delete</string>
 </resources>

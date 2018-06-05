@@ -32,14 +32,22 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     //https://android-arsenal.com/details/1/5123
-    implementation  'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
+    implementation 'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
 
     //https://github.com/vipulasri/Timeline-View
     implementation 'com.github.vipulasri:timelineview:1.0.6'
 
+    //https://github.com/hdodenhof/CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 
 }
 
