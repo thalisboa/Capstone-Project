@@ -60,6 +60,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         String s = formatter.format(transaction.getDateTransaction());*/
 
         holder.mDate.setText(transaction.getDateTransaction());
+        holder.mCategory.setText(transaction.getCategory());
 
         if (transaction.isDeposit()) {
             holder.mTimelineView.setMarker(context.getDrawable(R.drawable.circle_green));
@@ -93,6 +94,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         TextView mType;
         TextView mValue;
         TextView mDate;
+        TextView mCategory;
         TimelineView mTimelineView;
 
 
@@ -105,6 +107,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             mType = itemView.findViewById(R.id.tv_recyclerview_type);
             mValue = itemView.findViewById(R.id.tv_recyclerview_value);
             mDate = itemView.findViewById(R.id.tv_recyclerview_date);
+            mCategory = itemView.findViewById(R.id.tv_recyclerview_category);
             mTimelineView = itemView.findViewById(R.id.time_marker);
             mTimelineView.initLine(viewType);
 

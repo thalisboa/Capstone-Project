@@ -28,7 +28,7 @@
                 android:id="@+id/transaction_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="textCapSentences"
                 android:maxLines="1" />
 
@@ -156,7 +156,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/transaction_category"
             app:layout_constraintStart_toEndOf="@+id/transaction_category"
             app:layout_constraintTop_toTopOf="@+id/transaction_category"
-            app:srcCompat="@drawable/plus_circle_outline" />
+            app:srcCompat="@drawable/plus_circle_outline"
+            android:contentDescription="@string/add_category_button"/>
 
 
     </android.support.constraint.ConstraintLayout>

@@ -22,7 +22,6 @@ import java.util.Date;
 import java.util.List;
 
 import thaislisboa.com.virtualwallet.R;
-import thaislisboa.com.virtualwallet.activities.HomeWalletActivity;
 import thaislisboa.com.virtualwallet.callback.CallbackCategory;
 import thaislisboa.com.virtualwallet.callback.CallbackMonths;
 import thaislisboa.com.virtualwallet.callback.CallbackTransaction;
@@ -170,7 +169,7 @@ public class FirebaseDB {
         return months;
     }
 
-    public static List<Transaction> loadTransactions(final HomeWalletActivity callbackTransaction, int month, int year, int maxResults) {
+    public static List<Transaction> loadTransactions(final CallbackTransaction callbackTransaction, int month, int year, int maxResults) {
 
         DatabaseReference transactionsRef = usersRef.child(Authenticator.getUser()).child(TRANSACTION);
         transactionsRef.keepSynced(true);
