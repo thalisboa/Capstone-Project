@@ -33,4 +33,18 @@
     <string name="add_category_button">add category button</string>
     <string name="detail_image">detail image</string>
     <string name="trash_image">trash image</string>
+    <string name="balance">Balance:</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="background">background</string>
+    <string name="are_you_sure">"Are you sure?"</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_transaction">Delete Transaction</string>
+    <string name="cancel">Cancel</string>
+    <string name="plus_button">Plus Button</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="spinner_months">Spinner Months</string>
+    <string name="progressbar">Progress Bar</string>
+    <string name="login_fail">Login Fail</string>
 </resources>

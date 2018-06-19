@@ -14,7 +14,7 @@
         android:background="@drawable/login"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp"
-        android:contentDescription="@string/login_with_google"
+        android:contentDescription="@string/background"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.gms.common.SignInButton

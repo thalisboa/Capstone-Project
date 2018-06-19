@@ -31,6 +31,7 @@ import thaislisboa.com.virtualwallet.callback.CallbackCategory;
 import thaislisboa.com.virtualwallet.firebase.FirebaseDB;
 import thaislisboa.com.virtualwallet.model.Category;
 import thaislisboa.com.virtualwallet.model.Transaction;
+import thaislisboa.com.virtualwallet.widget.UpdateWidgetService;
 
 public class AddTransationActivity extends AppCompatActivity implements CallbackCategory {
 
@@ -104,14 +105,11 @@ public class AddTransationActivity extends AppCompatActivity implements Callback
 
                 FirebaseDB.saveTransaction(t, AddTransationActivity.this);
 
+                UpdateWidgetService.startUpdateLastResult(AddTransationActivity.this);
+
                 finish();
             }
         });
-
-
-        // Spinner click listener
-        //spinner.setOnItemSelectedListener(this);
-
 
     }
 

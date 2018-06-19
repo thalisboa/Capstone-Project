@@ -4,7 +4,10 @@ import android.content.Context;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Locale;
+
+import thaislisboa.com.virtualwallet.model.Transaction;
 
 public class CurrencyUtils {
 
@@ -16,6 +19,7 @@ public class CurrencyUtils {
 
         return currency;
     }
+
 
     public static double getDouble(Context context, String value) {
 
@@ -34,4 +38,19 @@ public class CurrencyUtils {
         return 0;
     }
 
+    public static String calculateBalance(Context context, List<Transaction> transactionList) {
+        double balance = 0;
+
+        for (Transaction transaction : transactionList) {
+            if (transaction.isDeposit()) {
+                balance += transaction.getValue();
+            } else {
+                balance -= transaction.getValue();
+            }
+        }
+
+        String balanceStr = CurrencyUtils.getCurrency(context, balance);
+
+        return balanceStr;
+    }
 }

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -51,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (requestCode == Authenticator.RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
@@ -62,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
 
             } else {
-                Toast.makeText(this, "failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_LONG);
             }
         }
     }

@@ -12,16 +12,15 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.auth.AuthUI;
@@ -48,6 +47,7 @@ import thaislisboa.com.virtualwallet.model.Transaction;
 import thaislisboa.com.virtualwallet.util.AlertDialogHelper;
 import thaislisboa.com.virtualwallet.util.CurrencyUtils;
 import thaislisboa.com.virtualwallet.util.RecyclerItemClickListener;
+import thaislisboa.com.virtualwallet.widget.UpdateWidgetService;
 
 public class HomeWalletActivity extends AppCompatActivity implements CallbackTransaction, AlertDialogHelper.AlertDialogListener, CallbackMonths {
 
@@ -55,14 +55,15 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
     private CircleImageView mProfileImg;
     private TextView mProfileName;
     private TextView mPriceBalance;
-    Menu mContextMenu;
+    private Menu mContextMenu;
     boolean isMultiSelect = false;
-    ActionMode mActionMode;
-    AlertDialogHelper alertDialogHelper;
-    ListAdapter mListAdapter;
+    private ActionMode mActionMode;
+    private AlertDialogHelper alertDialogHelper;
+    private ListAdapter mListAdapter;
+    private ProgressBar mProgressBar;
 
-    ArrayList<Transaction> user_list = new ArrayList<>();
-    ArrayList<Transaction> multiselect_list = new ArrayList<>();
+    private ArrayList<Transaction> user_list = new ArrayList<>();
+    private ArrayList<Transaction> multiselect_list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
         mProfileName = findViewById(R.id.tv_user_name);
         mProfileImg = findViewById(R.id.profile_image);
         mPriceBalance = findViewById(R.id.tv_price_balace);
+        mProgressBar = findViewById(R.id.pg_home_wallet);
 
         mProfileName.setText(user.getDisplayName());
         Glide.with(this).load(user.getPhotoUrl()).into(mProfileImg);
@@ -130,8 +132,9 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
             };
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
-                    .setNegativeButton("No", dialogClickListener).show();
+            builder.setMessage(getString(R.string.are_you_sure)).setPositiveButton(getString(R.string.yes), dialogClickListener)
+                                     .setNegativeButton(getString(R.string.no), dialogClickListener).show();
+
             return true;
         }
         if (id == R.id.menu_add_category) {
@@ -159,20 +162,22 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
 
         user_list = new ArrayList<>(transactionList);
 
+
         RecyclerView mRecyclerView = findViewById(R.id.rv_insert);
         mListAdapter = new ListAdapter(transactionList, this, multiselect_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(HomeWalletActivity.this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mListAdapter);
 
+        mProgressBar.setVisibility(View.GONE);
+
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 if (isMultiSelect)
                     multi_select(position);
-                //else
-                //Toast.makeText(getApplicationContext(), "Details Page", Toast.LENGTH_SHORT).show();
-            }
+
+        }
 
             @Override
             public void onItemLongClick(View view, int position) {
@@ -219,7 +224,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
                 multiselect_list.remove(user_list.get(position));
             else {
                 multiselect_list.add(user_list.get(position));
-                Toast.makeText(getApplicationContext(), "Selected " + user_list.get(position).getName(), Toast.LENGTH_SHORT).show();
+
             }
 
             if (multiselect_list.size() > 0)
@@ -259,7 +264,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_delete:
-                    alertDialogHelper.showAlertDialog("", "Delete Transaction", "DELETE", "CANCEL", 1, false);
+                    alertDialogHelper.showAlertDialog("", getString(R.string.delete_transaction), getString(R.string.delete), getString(R.string.cancel), 1, false);
                     return true;
                 default:
                     return false;
@@ -287,6 +292,8 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
                 }
 
                 mListAdapter.notifyDataSetChanged();
+                UpdateWidgetService.startUpdateLastResult(this);
+
 
                 if (mActionMode != null) {
                     mActionMode.finish();
@@ -298,11 +305,6 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
             if (mActionMode != null) {
                 mActionMode.finish();
             }
-/*           SampleModel mSample = new SampleModel("Name"+user_list.size(),"Designation"+user_list.size());
-            user_list.add(mSample);
-            multiSelectAdapter.notifyDataSetChanged();
-*/
-
         }
     }
 
@@ -318,11 +320,6 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
 
     @Override
     public void onReturnMonths(List<String> monthsList) {
-
-        //Current date
-/*        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);*/
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_month);
 
@@ -356,9 +353,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
                 //String.format("%02d", month + 1)
                 FirebaseDB.loadTransactions(HomeWalletActivity.this, (month + 1), Integer.parseInt(selectedYear), 50);
 
-                Log.d("thais-log", "MONTH: " + String.format("%02d", month + 1) + " " + selectedYear);
-
-            }
+             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

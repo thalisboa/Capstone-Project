@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HomeActivity" />
         <activity
             android:name=".activities.AddTransationActivity"
             android:label="@string/title_activity_add_transation"
@@ -33,7 +32,21 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ChartActivity" />
         <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.HomeActivity1"></activity>
+
+
+        <receiver android:name=".widget.WalletWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/wallet_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.UpdateWidgetService"
+            android:enabled="true" />
     </application>
 
 </manifest>
