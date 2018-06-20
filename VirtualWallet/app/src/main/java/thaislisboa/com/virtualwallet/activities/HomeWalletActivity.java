@@ -24,6 +24,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +64,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
     private AlertDialogHelper alertDialogHelper;
     private ListAdapter mListAdapter;
     private ProgressBar mProgressBar;
+    private AdView mAdView;
 
     private ArrayList<Transaction> user_list = new ArrayList<>();
     private ArrayList<Transaction> multiselect_list = new ArrayList<>();
@@ -93,6 +97,10 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
             }
         });
 
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 
@@ -133,7 +141,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(getString(R.string.are_you_sure)).setPositiveButton(getString(R.string.yes), dialogClickListener)
-                                     .setNegativeButton(getString(R.string.no), dialogClickListener).show();
+                    .setNegativeButton(getString(R.string.no), dialogClickListener).show();
 
             return true;
         }
@@ -177,7 +185,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
                 if (isMultiSelect)
                     multi_select(position);
 
-        }
+            }
 
             @Override
             public void onItemLongClick(View view, int position) {
@@ -353,7 +361,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
                 //String.format("%02d", month + 1)
                 FirebaseDB.loadTransactions(HomeWalletActivity.this, (month + 1), Integer.parseInt(selectedYear), 50);
 
-             }
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

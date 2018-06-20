@@ -131,14 +131,14 @@ public class ChartActivity extends AppCompatActivity implements CallbackMonths, 
 
         Pie pie = AnyChart.pie();
 
-        pie.setTitle("Spending by category");
-        pie.getLabels().setPosition("outside");
+        pie.setTitle(getString(R.string.spending_by_category));
+        pie.getLabels().setPosition(getString(R.string.outside));
         pie.getLegend().getTitle().setEnabled(true);
         pie.getLegend().getTitle()
-                .setText("(%)")
+                .setText(getString(R.string.percentage_title))
                 .setPadding(0d, 0d, 10d, 0d);
         pie.getLegend()
-                .setPosition("center-bottom")
+                .setPosition(getString(R.string.center_bottom))
                 .setItemsLayout(LegendLayout.HORIZONTAL_EXPANDABLE)
                 .setAlign(EnumsAlign.CENTER);
 
@@ -151,7 +151,6 @@ public class ChartActivity extends AppCompatActivity implements CallbackMonths, 
         pie.setData(data);
         AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
         anyChartView.setChart(pie);
-
 
     }
 }

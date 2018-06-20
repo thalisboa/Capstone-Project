@@ -76,8 +76,10 @@ public class FirebaseDB {
 
                 for (DataSnapshot dataSnapshotCategory : dataSnapshot.getChildren()) {
                     Category category = dataSnapshotCategory.getValue(Category.class);
-                    categories.add(category);
-                    Log.d("thais-log", "loadCategories: " + category.getName());
+                    if (category != null) {
+                        categories.add(category);
+                        Log.d("thais-log", "loadCategories: " + category.getName());
+                    }
                 }
 
                 callbackCategory.onReturn(categories);
@@ -133,25 +135,26 @@ public class FirebaseDB {
 
                 for (DataSnapshot dataSnapshotCategory : dataSnapshot.getChildren()) {
                     Transaction transaction = dataSnapshotCategory.getValue(Transaction.class);
+                    if (transaction != null) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date parse = null;
+                        try {
+                            parse = sdf.parse(transaction.getDateTransaction());
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date parse = null;
-                    try {
-                        parse = sdf.parse(transaction.getDateTransaction());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        Calendar c = Calendar.getInstance();
+                        c.setTime(parse);
 
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(parse);
+                        //c.get(Calendar.MONTH) + c.get(Calendar.DATE) + c.get(Calendar.YEAR)
 
-                    //c.get(Calendar.MONTH) + c.get(Calendar.DATE) + c.get(Calendar.YEAR)
+                        String monthYear = DateUtils.getMonth(c.get(Calendar.MONTH)) + "/" + c.get(Calendar.YEAR);
 
-                    String monthYear = DateUtils.getMonth(c.get(Calendar.MONTH)) + "/" + c.get(Calendar.YEAR);
-
-                    if (!months.contains(monthYear)) {
-                        months.add(monthYear);
-                        Log.d("thais-log", "loadTMonths: " + monthYear);
+                        if (!months.contains(monthYear)) {
+                            months.add(monthYear);
+                            Log.d("thais-log", "loadTMonths: " + monthYear);
+                        }
                     }
                 }
 

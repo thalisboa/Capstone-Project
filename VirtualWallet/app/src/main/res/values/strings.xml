@@ -47,4 +47,11 @@
     <string name="spinner_months">Spinner Months</string>
     <string name="progressbar">Progress Bar</string>
     <string name="login_fail">Login Fail</string>
+    <string name="admob_description">AdMob Banner</string>
+    <string name="spending_by_category">"Spending by category"</string>
+    <string name="outside">outside</string>
+    <string name="percentage_title">(%)</string>
+    <string name="center_bottom">center-bottom</string>
+    <string name="chart_description">Chart for Spendings</string>
+    <string name="date">Date</string>
 </resources>

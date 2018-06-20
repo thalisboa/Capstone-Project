@@ -48,8 +48,6 @@ public class CategoryActivity extends AppCompatActivity implements CallbackCateg
 
         FirebaseDB.loadCategories(this);
 
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         //Button
         mBtAdd.setOnClickListener(new View.OnClickListener() {

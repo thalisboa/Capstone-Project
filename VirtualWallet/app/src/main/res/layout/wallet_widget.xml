@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Janeiro / 2018"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -27,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:text="@string/balance"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="8dp"
-            android:contentDescription="Balance"
-            android:text="Balance: "
+
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
 
@@ -39,9 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"
-            android:contentDescription="Balance"
-            android:text="R$: 1000,00" />
+            android:layout_marginRight="8dp" />
 
         <ImageView
             android:id="@+id/appwidget_add_transaction"
@@ -49,7 +46,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/plus_circle_outline"
             android:padding="16dp"
-            android:text="add transaction" />
+            android:contentDescription="@string/plus_button"/>
 
     </LinearLayout>
 

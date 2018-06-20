@@ -20,8 +20,7 @@ public class Authenticator {
     public static void startAuthenticationUI(Activity context) {
 
         // Choose authentication providers
-        providers = Arrays.asList(
-                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
+        providers = Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build());
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
 

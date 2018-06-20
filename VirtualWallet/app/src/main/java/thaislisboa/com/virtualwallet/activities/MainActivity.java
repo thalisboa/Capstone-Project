@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.common.SignInButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import thaislisboa.com.virtualwallet.R;
 import thaislisboa.com.virtualwallet.firebase.Authenticator;
@@ -53,44 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Intent intent = new Intent(this, HomeWalletActivity.class);
                 startActivity(intent);
                 finish();
 
             } else {
-                Toast.makeText(this, "failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_LONG).show();
             }
 
         }
     }
-            //dialog
 
-          /*  public void open(View view){
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setMessage("Would you like to remove this item?");
-                alertDialogBuilder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                Toast.makeText(MainActivity.this, "You clicked yes
-                                        button. (",Toast.LENGTH_LONG).show();
-                            });
-
-                            };
-                                 alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener()
-                            {
-                                Override
-                                public void onClick (DialogInterface dialog,int which){
-                                finish();
-                            }
-                                    });
-                                AlertDialog alertDialog = alertDialogBuilder.create();
-                                alertDialog.show();
-                            }
-                        }
-            }
-        }*/
-
-    }
+}
 

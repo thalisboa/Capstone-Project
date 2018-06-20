@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
 
             } else {
-                Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_LONG);
+                Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -54,15 +54,14 @@
         android:id="@+id/rv_insert"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_balance"
+        app:layout_constraintBottom_toTopOf="@+id/tv_price_balace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_month"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
         tools:listitem="@layout/recyclerview_item">
 
     </android.support.v7.widget.RecyclerView>
@@ -72,12 +71,11 @@
         android:id="@+id/tv_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/balance"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -85,11 +83,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="R$ 1000,00"
         android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="@+id/tv_balance"
         app:layout_constraintStart_toEndOf="@+id/tv_balance"
-        app:layout_constraintTop_toTopOf="@+id/tv_balance" />
+        app:layout_constraintTop_toTopOf="@+id/tv_balance"
+        tools:text="R$ 100,00" />
 
     <ProgressBar
         android:id="@+id/pg_home_wallet"
@@ -105,5 +103,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/admob_description"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
 </android.support.constraint.ConstraintLayout>

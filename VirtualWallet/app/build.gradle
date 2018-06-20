@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'udacity'
+            keyPassword 'udacity'
+            storeFile file('D:/Capstone/VirtualWallet/app/keystore.jks')
+            storePassword 'udacity'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "thaislisboa.com.virtualwallet"
@@ -14,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -23,35 +32,30 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
-    implementation 'com.google.firebase:firebase-database:11.8.0'
-    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
+    //AdMob
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.firebaseui:firebase-ui-auth:4.0.1'
     //https://android-arsenal.com/details/1/5123
     implementation 'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
-
     //https://github.com/vipulasri/Timeline-View
     implementation 'com.github.vipulasri:timelineview:1.0.6'
-
     //https://github.com/hdodenhof/CircleImageView
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
     //https://github.com/bumptech/glide
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
-
     //https://github.com/AnyChart/AnyChart-Android
     implementation 'com.github.AnyChart:AnyChart-Android:0.2.1'
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-
 }
 
 apply plugin: 'com.google.gms.google-services'
