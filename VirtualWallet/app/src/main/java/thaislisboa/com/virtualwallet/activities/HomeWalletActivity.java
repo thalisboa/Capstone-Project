@@ -97,7 +97,7 @@ public class HomeWalletActivity extends AppCompatActivity implements CallbackTra
             }
         });
 
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, getString(R.string.admob_id));
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

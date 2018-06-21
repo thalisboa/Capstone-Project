@@ -48,10 +48,12 @@
     <string name="progressbar">Progress Bar</string>
     <string name="login_fail">Login Fail</string>
     <string name="admob_description">AdMob Banner</string>
-    <string name="spending_by_category">"Spending by category"</string>
+    <string name="spending_by_category">"Earning Categories"</string>
     <string name="outside">outside</string>
     <string name="percentage_title">(%)</string>
     <string name="center_bottom">center-bottom</string>
     <string name="chart_description">Chart for Spendings</string>
     <string name="date">Date</string>
+    <string name="admob_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

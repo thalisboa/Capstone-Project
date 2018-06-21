@@ -5,7 +5,7 @@ android {
         release {
             keyAlias 'udacity'
             keyPassword 'udacity'
-            storeFile file('D:/Capstone/VirtualWallet/app/keystore.jks')
+            storeFile file('keystore.jks')
             storePassword 'udacity'
         }
     }
